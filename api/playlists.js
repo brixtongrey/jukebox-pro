@@ -14,7 +14,7 @@ import requireUser from "#middleware/requireUser";
 router.use(requireUser);
 
 router.get("/", async (req, res) => {
-  const playlists = await getPlaylists();
+  const playlists = await getPlaylists(req.user.id);
   res.send(playlists);
 });
 
@@ -26,7 +26,7 @@ router.post("/", async (req, res) => {
   if (!name || !description)
     return res.status(400).send("Request body requires: name, description");
 
-  const playlist = await createPlaylist(name, description);
+  const playlist = await createPlaylist(name, description, req.user.id);
   res.status(201).send(playlist);
 });
 
