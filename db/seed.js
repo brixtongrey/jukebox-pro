@@ -19,7 +19,6 @@ async function seed() {
     const playlistId = 1 + Math.floor(i / 2);
     await createPlaylistTrack(playlistId, i);
   }
-}
 
   // Create 2 test users with 5 tracks each
   const user1 = await createUser("stargazernightsky", "cosmos42!");
@@ -31,3 +30,4 @@ async function seed() {
   for (let i = 3; i <= 8; i++) {
     await createPlaylist(i, user2.id, 2, "2222-02-20");
   }
+}
