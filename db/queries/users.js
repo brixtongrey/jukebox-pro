@@ -19,3 +19,15 @@ export async function createUser (username, password) {
     throw error;
    }
 }
+
+export async function getUserByUsername(username) {
+  const sql = `
+    SELECT *
+    FROM users
+    WHERE username = $1
+  `;
+  const {
+    rows: [user],
+  } = await db.query(sql, [username]);
+  return user || null; 
+}

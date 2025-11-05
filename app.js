@@ -1,22 +1,24 @@
 import express from "express";
-const app = express();
-export default app;
-
 import morgan from "morgan";
 
 // import middleware
 import getUserFromToken from "./middleware/getUserFromToken.js";
 
+// routers
 import usersRouter from "#api/users";
 import tracksRouter from "#api/tracks";
 import playlistsRouter from "#api/playlists";
+
+const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
+// attach token middleware
 app.use(getUserFromToken);
 
+// routers
 app.use("/users", usersRouter);
 app.use("/tracks", tracksRouter);
 app.use("/playlists", playlistsRouter);
@@ -42,3 +44,5 @@ app.use((err, req, res, next) => {
   console.error(err);
   res.status(500).send("Sorry! Something went wrong.");
 });
+
+export default app;

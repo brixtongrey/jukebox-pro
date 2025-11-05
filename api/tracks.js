@@ -3,6 +3,8 @@ const router = express.Router();
 export default router;
 
 import { getTracks, getTrackById } from "#db/queries/tracks";
+import requireBody from "#middleware/requireBody";
+import requireUser from "#middleware/requireUser";
 
 router.get("/", async (req, res) => {
   const tracks = await getTracks();
