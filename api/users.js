@@ -3,12 +3,11 @@ import bcrypt from "bcrypt";
 
 import { createUser, getUserById } from "#db/queries/users";
 import requireBody from "#middleware/requireBody";
-import requireUser from "#middleware/requireUser";
+// import requireUser from "#middleware/requireUser";
 import { createToken } from "#utils/jwt";
 
 const router = express.Router();
 export default router;
-
 
 router.post(
     "/register",
