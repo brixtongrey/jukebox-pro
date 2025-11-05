@@ -24,10 +24,10 @@ async function seed() {
   // Create 2 test users with 5 tracks each
   const user1 = await createUser("stargazernightsky", "cosmos42!");
   for (let i = 1; i <= 5; i++) {
-    await createReservation(i, user1.id, 1, "1111-11-11");
+    await createPlaylist(i, user1.id, 1, "1111-11-11");
   }
 
   const user2 = await createUser("wandereropenroad", "miles2go");
   for (let i = 3; i <= 8; i++) {
-    await createReservation(i, user2.id, 2, "2222-02-20");
+    await createPlaylist(i, user2.id, 2, "2222-02-20");
   }
