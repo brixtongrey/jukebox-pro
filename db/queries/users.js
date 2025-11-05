@@ -20,7 +20,7 @@ export async function createUser (username, password) {
    }
 }
 
-export async function getUserByUsername(username) {
+export async function getUserById(username) {
   const sql = `
     SELECT *
     FROM users

@@ -1,13 +1,13 @@
 import express from "express";
 import morgan from "morgan";
 
-// import middleware
-import getUserFromToken from "./middleware/getUserFromToken.js";
-
 // routers
 import usersRouter from "#api/users";
 import tracksRouter from "#api/tracks";
 import playlistsRouter from "#api/playlists";
+
+// import middleware
+import getUserFromToken from "./middleware/getUserFromToken.js";
 
 const app = express();
 

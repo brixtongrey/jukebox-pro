@@ -1,7 +1,7 @@
 import express from "express";
 import bcrypt from "bcrypt";
 
-import { createUser, getUserByUsername } from "#db/queries/users";
+import { createUser, getUserById } from "#db/queries/users";
 import requireBody from "#middleware/requireBody";
 import requireUser from "#middleware/requireUser";
 import { createToken } from "#utils/jwt";
@@ -24,7 +24,7 @@ router.post(
 router.post("/login", 
     requireBody(["username", "password"]), async (req, res) => {
   const { username, password } = req.body;
-  const user = await getUserByUsername(username);
+  const user = await getUserById(username);
   if (!user) return res.status(401).send("Invalid email or password.");
   const token = createToken({ id: user.id });
   res.send(token);
